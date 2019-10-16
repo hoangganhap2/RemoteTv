@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Television(chanelpersent,volume,status) {
+        this.chanelpersent=chanelpersent;
+        this.volume=volume;
+        this.status=false;
+
+        this.setVolume=function (newVolume) {
+            this.volume=newVolume;
+        };
+        this.setChanel=function (newChanel) {
+            this.chanelpersent=newChanel;
+        };
+        this.getVolume=function () {
+            return this.volume;
+        };
+        this.getChanel=function () {
+            return this.chanelpersent;
+        };
+        this.getStatus=function () {
+            return this.status;
+        }
+    }
+    function Remote(status,volume,chanel) {
+        this.status=false;
+        this.volume=volume;
+        this.chanel=chanel;
+
+        this.getChanel=function () {
+            return this.chanel
+        };
+        this.getVolume=function () {
+            return this.volume;
+        };
+        this.upVolume=function (tivi,upVolume) {
+            if (this.status){
+                this.volume+=upVolume;
+                tivi.volume=this.volume;
+            }else {
+                alert("TV đang tắt hãy bật lên");
+            }
+        };
+        this.downVolume=function (tivi,downVolume) {
+            if(this.status){
+                this.volume-=downVolume;
+                tivi.volume=this.volume;
+            }else {
+                alert("TV đang tắt hãy bật lên");
+            }
+        };
+        this.changeChanel=function (tivi,newChanel) {
+            if(this.status){
+                this.chanel=newChanel;
+                tivi.chanelpersent=this.chanel;
+            }else {
+                alert("TV đang tắt hãy bật lên");
+            }
+        };
+        this.turnOn=function (tivi) {
+            if(this.status){
+                alert("TV đã bật");
+            }else {
+                this.status=true;
+                tivi.status=this.status;
+                alert("TV đang bật lên");
+            }
+        };
+        this.turnOff=function (tivi) {
+            if (this.status){
+                alert("TV sẽ được tắt");
+                this.status=false;
+                tivi.status=this.status;
+            }else {
+                alert("TV đã được tắt");
+            }
+        };
+
+
+    }
+    let tv=new Television(1,14,false);
+    let rm=new Remote(false,14,1)
+</script>
+</body>
+</html>
